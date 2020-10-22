@@ -39,6 +39,9 @@ export class Order {
   state: OrderState;
 
   @Prop()
+  receivedState: string;
+
+  @Prop()
   id: number;
 
   @Prop()
