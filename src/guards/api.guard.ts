@@ -7,7 +7,9 @@ export class ApiGuard implements CanActivate {
   constructor(private readonly configService: ConfigService) {}
 
   canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
-    const key = context.switchToHttp().getRequest<Request>()?.headers?.['x-api-key'];
-    return key === this.configService.get('X-API-KEY1');
+    const key1 = context.switchToHttp().getRequest<Request>()?.headers?.['x-api-key'];
+    const key2 = this.configService.get('X-API-KEY1');
+    console.log(key1, key2);
+    return key1 === key2;
   }
 }
