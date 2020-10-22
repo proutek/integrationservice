@@ -16,7 +16,7 @@ export class OrderService implements OnModuleInit, OnApplicationShutdown {
   constructor(@InjectModel(Order.name) private orderModel: Model<OrderDocument>) {}
 
   async getOrdersByState(state: OrderState): Promise<OrderDocument[]> {
-    return await this.orderModel.find({ state }).limit(100);
+    return await this.orderModel.find({ state, needFix: false }).limit(100);
   }
 
   initNewOrdersProcessing() {
